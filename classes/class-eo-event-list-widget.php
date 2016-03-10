@@ -277,6 +277,11 @@ function eventorganiser_list_events( $query, $args = array(), $echo = 1 ) {
 	if ( 'false' === strtolower( $query['showpastevents'] ) ) {
 		$query['showpastevents'] = 0;
 	}
+	
+	if( strtolower($query['showpastevents']) === 'true' ){
+		$query['event_end_before'] = 'now';
+		$query['order'] = 'DESC';
+	}
 
 	if ( ! empty( $query['numberposts'] ) ) {
 		$query['posts_per_page'] = (int) $query['numberposts'];
